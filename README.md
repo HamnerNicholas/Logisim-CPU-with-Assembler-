@@ -188,6 +188,13 @@ The Logisim circuit contains the main hardware components required to run assemb
 
 ---
 
+# CPU Circuit
+
+Below is the complete Logisim implementation of the processor architecture.
+
+![CPU Circuit](<img width="1408" height="754" alt="image" src="https://github.com/user-attachments/assets/3eaa2d55-7995-4971-87c9-372a2af8df62" />
+)
+
 # Purpose
 
 This project was created as a class project to better understand how computers execute instructions at a low level.
