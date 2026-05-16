@@ -1,0 +1,101 @@
+; constants
+.define NUM_OF_FIB 8
+.define LAST_NAME_LEN 6
+
+
+; code
+addi r7 NUM_OF_FIB
+copy r7
+addi r0 0 
+copy r0
+addi r1 1
+copy r1
+tty "Nicholas" 
+: NAMELoop
+tty " Hamner"
+addi r2 LAST_NAME_LEN ; increment the last name counter by length of last name
+copy r2
+addi r1 0
+add r0
+copy r3
+addi r1 0
+copy r0
+addi r3 0
+copy r1
+addi r3 0 
+store r4 0
+addi r4 1 
+copy r4 
+addi r6 1 ; loads r6 the counter into the acc
+copy r6
+beq r7 TTYLoop
+addi r5 0
+beq r5 NAMELoop ; unconditional jump back to name loop
+: TTYLoop 
+
+; print fibonacci sequence 
+: TTYLoop
+tty " "
+load r5 0 ; loads address stored in reg 5 to the acc
+ssrf r0
+jsr printNum
+addi r5 1 ; increments the index register by 1
+copy r5 ; stores that incremented value back into reg 5
+addi r7 NUM_OF_FIB ; load 0 into acc
+bne r5 TTYLoop ; unconditional jump back to fib print
+halt
+
+
+: printNum
+; char3 = (NUM / 1) % 10
+; char2 = (NUM / 10) % 10
+; char1 = (NUM / 100) % 10
+
+rsrf r0 ; load acc with NUM
+copy r0 ; load NUM into r0
+
+; check if greater than 100
+
+rsrf r7 ; 0
+copy r3
+divi r0 10
+copy r7
+beq r3 skipPrintChar2
+
+divi r0 100
+copy r7
+beq r3 skipPrintChar1
+
+
+; char3
+
+copy r6
+divi r0 100
+copy r1 ; r1 = (NUM / 100)
+divri r1 10 ; acc = (NUM / 100) % 10
+copy r1
+addi r1 0x30 ; convert digit to ascii
+ttya ; print char
+: skipPrintChar1
+
+; char2
+
+divi r0 10
+copy r1 ; r1 = (NUM / 10)
+divri r1 10 ; acc = (NUM / 10) % 10
+copy r1
+addi r1 0x30 ; convert digit to ascii
+ttya ; print char
+: skipPrintChar2
+
+; char3
+
+divi r0 1
+copy r1 ; r1 = (NUM / 1)
+divri r1 10 ; acc = (NUM / 1) % 10
+copy r1
+addi r1 0x30 ; convert digit to ascii
+ttya ; print char
+
+tty ","
+rsr
