@@ -64,7 +64,7 @@ divri
 
 ## Register ALU Instructions
 
-```asm
+```text
 add
 sub
 div
