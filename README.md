@@ -243,5 +243,6 @@ Potential future improvements include:
 ---
 
 # Author
-Nicholas Hamner, 
+Nicholas Hamner
+---
 Created as part of a computer architecture and digital systems design project.
