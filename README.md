@@ -193,7 +193,7 @@ The Logisim circuit contains the main hardware components required to run assemb
 Below is the complete Logisim implementation of the processor architecture.
 
 ![CPU Circuit](CPU.PNG)
-)
+
 
 # Purpose
 
